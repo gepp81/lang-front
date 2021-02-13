@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="d-none d-lg-block col-4"></div>
+        <div class="col-12 col-lg-4">
+            <form [formGroup]="langForm">
+                <ng-select placeholder="{{'lang.selectLang' | translate}}" (change)="onChangeLanguage($event)"
+                    [searchable]="false" notFoundText="{{'' | translate}}" [clearable]="false"
+                    [items]="langs" bindLabel="name" bindValue="id">
+                    <ng-option *ngFor="let lang of langs" [value]="lang.id">
+                        {{ lang.name }}
+                    </ng-option>
+                </ng-select>
+            </form>
+        </div>
+        <div class="d-none d-lg-block col-4"></div>
+    </div>
+    <div *ngIf="selectedTip">
+        <div class="row"><div class="col"><hr/></div></div>
+        <div class="row">
+        <div class="d-none d-lg-block col-4"></div>
+        <div class="col-12 col-lg-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <p class="card-text">{{ selectedTip.name }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-lg-block col-4"></div>
+    </div>
+</div>
